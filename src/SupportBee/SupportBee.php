@@ -4,6 +4,7 @@ namespace SupportBee;
 
 use SupportBee\Exceptions\ConfigException as ConfigException;
 use SupportBee\API\Tickets as Tickets;
+use SupportBee\API\Replies as Replies;
 
 /**
  * Class SupportBee
@@ -56,7 +57,7 @@ class SupportBee
 		return Tickets::tickets( $options );
 	}
 
-	public function ticket( $id = '' )
+	public function ticket( $id = 0 )
 	{
 		return Tickets::get_ticket( $id );
 	}
@@ -67,5 +68,15 @@ class SupportBee
 			$options = array( 'query' => $options );
 
 		return Tickets::search( $options );
+	}
+
+	public function replies( $id = 0 )
+	{
+		return Replies::replies( $id );
+	}
+
+	public function reply( $ticket_id = 0, $reply_id = 0 )
+	{
+		return Replies::get_reply( $ticket_id, $reply_id );
 	}
 }

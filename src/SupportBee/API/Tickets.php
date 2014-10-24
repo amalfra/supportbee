@@ -34,7 +34,7 @@ class Tickets extends API {
 		self::validate( $options, array(
 			'per_page', 'page', 'spam',
 			'trash', 'query'
-		), array( 'query' ));	
+		), array( 'query' ) );	
 
 		return self::process_request( 'tickets/search', $options );	
 	}
