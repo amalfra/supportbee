@@ -54,6 +54,34 @@ Now the available API calls can be done using the instance. All the result from 
  2. *ticket* - Retrieves the ticket specified by the id.
  3. *searchTickets* - Returns 15 tickets of the company in the order of their last activity matching the search query.
 
+### Reply
+ 1. *replies* - Retrieves all the replies of the ticket with id ticket_id.
+ 2. *reply* - Retrieves the reply for ticket specified by the ticket_id with id.
+
+### Comment
+
+ 1. *comments* - Retrieves all the comments of the ticket with id ticket_id.
+
+### Agent
+
+ 1. *agents* - Retrieves all confirmed agents of the company.
+ 2. *agent* - Retrieves the agent for company specified by the id.
+
+### Label
+
+ 1. *labels* - Retrieves all the custom labels of a company.
+
+### Groups
+
+ 1. *groups* - Retrieves all the groups of the company.
+
+### Snippets
+
+ 1. *snippets* - Returns all the snippets of the company.
+
+### WebHooks
+
+ 1. *webhooks* - Returns all the web hooks of the company.
 
 ## Development
 
