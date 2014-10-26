@@ -8,6 +8,9 @@ use SupportBee\API\Replies as Replies;
 use SupportBee\API\Comments as Comments;
 use SupportBee\API\Agents as Agents;
 use SupportBee\API\Labels as Labels;
+use SupportBee\API\Groups as Groups;
+use SupportBee\API\Snippets as Snippets;
+use SupportBee\API\WebHooks as WebHooks;
 
 /**
  * Class SupportBee
@@ -104,5 +107,20 @@ class SupportBee
 	public function labels()
 	{
 		return Labels::labels();
+	}
+
+	public function groups( $options = array() )
+	{
+		return Groups::groups( $options );
+	}
+
+	public function snippets()
+	{
+		return Snippets::snippets();
+	}
+
+	public function webhooks()
+	{
+		return WebHooks::webhooks();
 	}
 }
