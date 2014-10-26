@@ -19,13 +19,13 @@ class Tickets extends API {
 			'trash', 'replies', 'max_replies', 'assigned_user',
 			'assigned_group', 'starred', 'label', 'since',
 			'until', 'requester_emails'
-		));
-		
+		) );
+
 		return self::process_request( 'tickets', $options );
 	}
-	
+
 	public static function get_ticket( $id = 0 )
-	{		
+	{
 		return self::process_request( 'tickets/'.$id );
 	}
 
@@ -34,8 +34,8 @@ class Tickets extends API {
 		self::validate( $options, array(
 			'per_page', 'page', 'spam',
 			'trash', 'query'
-		), array( 'query' ) );	
+		), array( 'query' ) );
 
-		return self::process_request( 'tickets/search', $options );	
+		return self::process_request( 'tickets/search', $options );
 	}
 }

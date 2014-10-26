@@ -5,6 +5,9 @@ namespace SupportBee;
 use SupportBee\Exceptions\ConfigException as ConfigException;
 use SupportBee\API\Tickets as Tickets;
 use SupportBee\API\Replies as Replies;
+use SupportBee\API\Comments as Comments;
+use SupportBee\API\Agents as Agents;
+use SupportBee\API\Labels as Labels;
 
 /**
  * Class SupportBee
@@ -28,7 +31,7 @@ class SupportBee
 		self::$auth_token = $config['token'];
 
 		self::$headers = array(
-			'Content-Type' => 'application/json', 
+			'Content-Type' => 'application/json',
 			'Accept'       => 'application/json'
 		);
 	}
@@ -44,7 +47,7 @@ class SupportBee
 	{
 		if ( count( $config ) == 0 )
 			throw new ConfigException('Auth token and company need to be set.');
-		
+
 		if ( !isset( $config['token'] ) || !ctype_alnum( $config['token'] ) )
 			throw new ConfigException('Invalid Token.');
 
@@ -78,5 +81,28 @@ class SupportBee
 	public function reply( $ticket_id = 0, $reply_id = 0 )
 	{
 		return Replies::get_reply( $ticket_id, $reply_id );
+	}
+
+	public function comments( $id = 0 )
+	{
+		return Comments::comments( $id );
+	}
+
+	public function agents( $options = array() )
+	{
+		if ( !is_array($options) )
+			$options = array( 'with_invited' => $options );
+
+		return Agents::agents( $options );
+	}
+
+	public function agent( $id = 0 )
+	{
+		return Agents::get_agent( $id );
+	}
+
+	public function labels()
+	{
+		return Labels::labels();
 	}
 }
