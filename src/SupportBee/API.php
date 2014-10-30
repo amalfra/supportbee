@@ -61,6 +61,8 @@ class API {
 			return Requests::get(SupportBee::$base_url.$path.'?'.http_build_query( $options ), SupportBee::$headers, $options);
 		else if ( strtoupper($method) == 'POST' )
 			return Requests::post(SupportBee::$base_url.$path, SupportBee::$headers, $options);
+		else if ( strtoupper($method) == 'DELETE' )
+			return Requests::delete(SupportBee::$base_url.$path.'?'.http_build_query( $options ), SupportBee::$headers, $options);
 		else
 			throw new Exception( 'Unknown HTTP request method' );
 	}
@@ -68,7 +70,17 @@ class API {
 	protected function handle_response( $resp )
 	{
 		if( $resp->status_code != 200 )
-			throw new HTTPException( ( isset( self::$http_error_msgs[$resp->status_code] ) ) ? self::$http_error_msgs[$resp->status_code] : 'An HTTP error with status code '.$resp->status_code.' occured' );
+		{
+			if( $resp->status_code == 204 )
+				return true;
+
+			$decoded = @json_decode($resp->body, true);
+
+			if(!$decoded)
+				throw new HTTPException( ( isset( self::$http_error_msgs[$resp->status_code] ) ) ? self::$http_error_msgs[$resp->status_code] : 'An HTTP error with status code '.$resp->status_code.' occured' );
+			else
+				return $decoded;
+		}
 		else
 			return json_decode($resp->body, true);
 	}

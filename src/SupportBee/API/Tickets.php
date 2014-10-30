@@ -48,4 +48,19 @@ class Tickets extends API {
 
 		return self::process_request( 'tickets/', array('ticket' => $options), 'POST' );
 	}
+
+	public static function delete_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id, array(), 'DELETE' );
+	}
+
+	public static function archive_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/archive', array(), 'POST' );
+	}
+
+	public static function unarchive_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/archive', array(), 'DELETE' );
+	}
 }

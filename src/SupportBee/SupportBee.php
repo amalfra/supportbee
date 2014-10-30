@@ -73,6 +73,21 @@ class SupportBee
 		return Tickets::create_ticket( $options );
 	}
 
+	public function deleteTicket( $id = 0 )
+	{
+		return Tickets::delete_ticket( $id );
+	}
+
+	public function archiveTicket( $id = 0 )
+	{
+		return Tickets::archive_ticket( $id );
+	}
+
+	public function unarchiveTicket( $id = 0 )
+	{
+		return Tickets::unarchive_ticket( $id );
+	}
+
 	public function searchTickets( $options = array() )
 	{
 		if ( !is_array($options) )
