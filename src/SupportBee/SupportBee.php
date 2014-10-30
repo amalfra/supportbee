@@ -88,6 +88,41 @@ class SupportBee
 		return Tickets::unarchive_ticket( $id );
 	}
 
+	public function assignTicket( $options = array() )
+	{
+		return Tickets::assign_ticket( $options );
+	}
+
+	public function starTicket( $id = 0 )
+	{
+		return Tickets::star_ticket( $id );
+	}
+
+	public function unstarTicket( $id = 0 )
+	{
+		return Tickets::unstar_ticket( $id );
+	}
+
+	public function spamTicket( $id = 0 )
+	{
+		return Tickets::spam_ticket( $id );
+	}
+
+	public function unspamTicket( $id = 0 )
+	{
+		return Tickets::unspam_ticket( $id );
+	}
+
+	public function trashTicket( $id = 0 )
+	{
+		return Tickets::trash_ticket( $id );
+	}
+
+	public function untrashTicket( $id = 0 )
+	{
+		return Tickets::untrash_ticket( $id );
+	}
+
 	public function searchTickets( $options = array() )
 	{
 		if ( !is_array($options) )

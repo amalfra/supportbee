@@ -4,6 +4,7 @@ namespace SupportBee\API;
 
 use SupportBee\SupportBee as SupportBee;
 use SupportBee\API as API;
+use \InvalidArgumentException;
 
 /**
  * Class Tickets
@@ -62,5 +63,43 @@ class Tickets extends API {
 	public static function unarchive_ticket( $id = 0 )
 	{
 		return self::process_request( 'tickets/'.$id.'/archive', array(), 'DELETE' );
+	}
+
+	public static function assign_ticket( $id = 0, $options = array() )
+	{
+		if ( !is_array($options) || !is_int($id) )
+			throw new InvalidArgumentException( 'Invalid type of Parameters passed' );
+
+		return self::process_request( 'tickets/'.$id.'/assignments', array("assignment" => $options), 'POST' );
+	}
+
+	public static function star_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/star', array(), 'POST' );
+	}
+
+	public static function unstar_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/star', array(), 'DELETE' );
+	}
+
+	public static function spam_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/spam', array(), 'POST' );
+	}
+
+	public static function unspam_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/spam', array(), 'DELETE' );
+	}
+
+	public static function trash_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/trash', array(), 'POST' );
+	}
+
+	public static function untrash_ticket( $id = 0 )
+	{
+		return self::process_request( 'tickets/'.$id.'/trash', array(), 'DELETE' );
 	}
 }

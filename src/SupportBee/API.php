@@ -33,7 +33,7 @@ class API {
 		}
 
 		if ( count( $required ) && !array_intersect( $options, $required))
-		throw new InvalidArgumentException( 'Required parameter not passed' );
+			throw new InvalidArgumentException( 'Required parameter not passed' );
 	}
 
 	protected function tfTostring(&$value,&$key)
