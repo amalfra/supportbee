@@ -68,6 +68,11 @@ class SupportBee
 		return Tickets::get_ticket( $id );
 	}
 
+	public function createTicket( $options = array() )
+	{
+		return Tickets::create_ticket( $options );
+	}
+
 	public function searchTickets( $options = array() )
 	{
 		if ( !is_array($options) )

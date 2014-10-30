@@ -38,4 +38,14 @@ class Tickets extends API {
 
 		return self::process_request( 'tickets/search', $options );
 	}
+
+	public static function create_ticket( $options = array() )
+	{
+		self::validate( $options, array(
+			'subject', 'requester_name', 'requester_email', 'copied_emails',
+			'notify_requester', 'content', 'attachment_ids', 'forwarding_address_id'
+		) );
+
+		return self::process_request( 'tickets/', array('ticket' => $options), 'POST' );
+	}
 }
