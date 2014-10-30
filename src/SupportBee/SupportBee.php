@@ -19,7 +19,7 @@ use SupportBee\API\WebHooks as WebHooks;
  */
 class SupportBee
 {
-	const VERSION = '0.0.1';
+	const VERSION = '0.0.2';
 	const BASE    = 'https://COMPANY.supportbee.com/';
 
 	public static $base_url   = null;

@@ -48,11 +48,25 @@ Now the available API calls can be done using the instance. All the result from 
 
 **Please refer to [https://developers.supportbee.com/api](https://developers.supportbee.com/api) for avaialble parameter details.**
 
+Incase of multiple paramters : Pass as an associative array.
+All method names follow Camel Casing.
+
 
 ### Ticket
  1. *tickets* - Returns 15 tickets of the company in the order of their last activity. Only tickets that are not archived are returned (please see optional parameters to get archived tickets).
  2. *ticket* - Retrieves the ticket specified by the id.
  3. *searchTickets* - Returns 15 tickets of the company in the order of their last activity matching the search query.
+ 4. *createTickets* - Creates a ticket for the company. Pass the information for ticket as associative array.
+ 5. *deleteTicket* - Deletes a trashed ticket. Only Admins can delete a trashed ticket.
+ 6. *archiveTicket* - Archives an unarchived ticket.
+ 7. *unarchiveTicket* - Un-archives an archived ticket.
+ 8. *assignTicket* - Assign a ticket to a User or Group. The first paramter is the ticket id. The second paramter is an associative arry with index as user_id if the ticket is to be assigned to an user and group_id if the ticket is to be assigned to a group.
+ 9. *starTicket* - Stars an un-starred ticket.
+ 10. *unstarTicket* - Un-stars a starred ticket.
+ 11. *spamTicket* - Spam's an un-spammed ticket.
+ 12. *unspamTicket* - Un-spam a spammed ticket.
+ 13. *trashTicket* - Trashes an un-trashed ticket.
+ 14. *untrashTicket* - Un-trashes a trashed ticket.
 
 ### Reply
  1. *replies* - Retrieves all the replies of the ticket with id ticket_id.
