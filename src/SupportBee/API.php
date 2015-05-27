@@ -60,7 +60,7 @@ class API {
 		if ( strtoupper($method) == 'GET' )
 			return Requests::get(SupportBee::$base_url.$path.'?'.http_build_query( $options ), SupportBee::$headers, $options);
 		else if ( strtoupper($method) == 'POST' )
-			return Requests::post(SupportBee::$base_url.$path, SupportBee::$headers, $options);
+			return Requests::post(SupportBee::$base_url.$path, SupportBee::$headers, json_encode($options));
 		else if ( strtoupper($method) == 'DELETE' )
 			return Requests::delete(SupportBee::$base_url.$path.'?'.http_build_query( $options ), SupportBee::$headers, $options);
 		else
