@@ -45,7 +45,7 @@ class Tickets extends API {
 		self::validate( $options, array(
 			'subject', 'requester_name', 'requester_email', 'copied_emails',
 			'notify_requester', 'content', 'attachment_ids', 'forwarding_address_id'
-		) );
+		), array( 'subject', 'requester_name', 'requester_email', 'content' ) );
 
 		return self::process_request( 'tickets/', array('ticket' => $options), 'POST' );
 	}

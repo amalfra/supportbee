@@ -56,7 +56,7 @@ All method names follow Camel Casing.
  1. *tickets* - Returns 15 tickets of the company in the order of their last activity. Only tickets that are not archived are returned (please see optional parameters to get archived tickets).
  2. *ticket* - Retrieves the ticket specified by the id.
  3. *searchTickets* - Returns 15 tickets of the company in the order of their last activity matching the search query.
- 4. *createTickets* - Creates a ticket for the company. Pass the information for ticket as associative array.
+ 4. *createTicket* - Creates a ticket for the company. Pass the information for ticket as associative array.
  5. *deleteTicket* - Deletes a trashed ticket. Only Admins can delete a trashed ticket.
  6. *archiveTicket* - Archives an unarchived ticket.
  7. *unarchiveTicket* - Un-archives an archived ticket.
