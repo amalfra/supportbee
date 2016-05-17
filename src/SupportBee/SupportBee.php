@@ -122,6 +122,16 @@ class SupportBee
 	{
 		return Tickets::untrash_ticket( $id );
 	}
+	
+	public function addLabelToTicket( $id = 0, $label = '' )
+	{
+		return Tickets::add_label( $id, $label );
+	}
+	
+	public function removeLabelFromTicket( $id = 0, $label = '' )
+	{
+		return Tickets::remove_label( $id, $label );
+	}
 
 	public function searchTickets( $options = array() )
 	{

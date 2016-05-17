@@ -102,4 +102,14 @@ class Tickets extends API {
 	{
 		return self::process_request( 'tickets/'.$id.'/trash', array(), 'DELETE' );
 	}
+	
+	public static function add_label( $id, $label )
+	{
+		return self::process_request( 'tickets/'.$id.'/labels/'.$label, array(), 'POST' );
+	}
+	
+	public static function remove_label( $id, $label )
+	{
+		return self::process_request( 'tickets/'.$id.'/labels/'.$label, array(), 'DELETE' );
+	}
 }
