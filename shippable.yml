@@ -1,1 +1,8 @@
 language: php
+
+build:
+  ci:
+    - mkdir -p shippable/codecoverage
+    - mkdir -p shippable/testresults
+    - composer install
+    - ./vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
