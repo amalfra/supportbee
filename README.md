@@ -1,6 +1,7 @@
 SupportBee API
 ========
 [![Run Status](https://api.shippable.com/projects/55fede0f1895ca447416a7dd/badge?branch=master)](https://app.shippable.com/projects/55fede0f1895ca447416a7dd)
+[![Coverage Badge](https://api.shippable.com/projects/55fede0f1895ca447416a7dd/coverageBadge?branch=master)](https://app.shippable.com/projects/55fede0f1895ca447416a7dd)
 
 A PHP wrapper for the SupportBee REST API.
 
