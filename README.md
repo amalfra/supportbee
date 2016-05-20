@@ -5,8 +5,6 @@ SupportBee API
 
 A PHP wrapper for the SupportBee REST API.
 
-The package is in Alpha version and hence there may be bugs and api methods that are not implemented
-
 > You can find your API token in Settings > API Token screen. See https://developers.supportbee.com/api for more.
 
 ## Installation
@@ -103,8 +101,9 @@ All method names follow Camel Casing.
 
 ## Development
 
-Questions or problems? Please post them on the [issue tracker](https://github.com/amalfra/supportbee/issues). You can contribute changes by forking the project and submitting a pull request.
+Questions, problems or suggestions? Please post them on the [issue tracker](https://github.com/amalfra/supportbee/issues). 
 
+You can contribute changes by forking the project and submitting a pull request. You can ensure the tests are passing by running `vendor/bin/phpunit`. Feel free to contribute :heart_eyes:
 
 UNDER MIT LICENSE
 =================
