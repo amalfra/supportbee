@@ -20,7 +20,7 @@ use SupportBee\API\Reports as Reports;
  */
 class SupportBee
 {
-	const VERSION = '0.0.4';
+	const VERSION = '0.0.5';
 	const BASE    = 'https://COMPANY.supportbee.com/';
 
 	public static $base_url   = null;
