@@ -12,13 +12,13 @@ use SupportBee\API as API;
  */
 class Replies extends API {
 
-	public static function replies( $id = 0 )
-	{
-		return self::process_request( 'tickets/'.$id.'/replies' );
-	}
+  public static function replies( $id = 0 )
+  {
+    return self::process_request( 'tickets/'.$id.'/replies' );
+  }
 
-	public static function get_reply( $ticket_id = 0, $reply_id = 0 )
-	{
-		return self::process_request( 'tickets/'.$ticket_id.'/replies/'.$reply_id );	
-	}
+  public static function get_reply( $ticket_id = 0, $reply_id = 0 )
+  {
+    return self::process_request( 'tickets/'.$ticket_id.'/replies/'.$reply_id );	
+  }
 }

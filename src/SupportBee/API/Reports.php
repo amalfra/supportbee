@@ -38,6 +38,4 @@ class Reports extends API {
 
     return self::process_request( 'reports/replies_count', $options  );
   }
-
-
 }

@@ -20,7 +20,7 @@ use SupportBee\API\Reports as Reports;
  */
 class SupportBee
 {
-	const VERSION = '0.0.3';
+	const VERSION = '0.0.4';
 	const BASE    = 'https://COMPANY.supportbee.com/';
 
 	public static $base_url   = null;
@@ -190,17 +190,17 @@ class SupportBee
 		return WebHooks::webhooks();
 	}
 
-	public function avg_first_response_time_report( $options = array() )
+	public function avgFirstResponseTimeReport( $options = array() )
 	{
 		return Reports::avg_first_response_time_report( $options );
 	}
 
-	public function tickets_count_report( $options = array() )
+	public function ticketsCountReport( $options = array() )
 	{
 		return Reports::tickets_count_report( $options );
 	}
 
-	public function replies_count_report( $options = array() )
+	public function repliesCountReport( $options = array() )
 	{
 		return Reports::replies_count_report( $options );
 	}
