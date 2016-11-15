@@ -99,6 +99,12 @@ All method names follow Camel Casing.
 
  1. *webhooks* - Returns all the web hooks of the company.
 
+### Reports
+
+ 1. *avgFirstResponseTimeReport* - Returns data points for average first response time.
+ 2. *ticketsCountReport* - Returns data points for tickets count.
+ 3. *repliesCountReport* - Returns data points for replies count.
+
 ## Development
 
 Questions, problems or suggestions? Please post them on the [issue tracker](https://github.com/amalfra/supportbee/issues). 
