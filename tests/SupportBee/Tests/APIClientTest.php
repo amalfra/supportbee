@@ -3,11 +3,11 @@
 namespace SupportBee\Tests;
 
 use SupportBee\API as API;
-use \PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 use \ReflectionMethod;
 use \InvalidArgumentException;
 
-class APIClientTest extends PHPUnit_Framework_TestCase {
+class APIClientTest extends TestCase {
 
 	private function getProtectedProperty( $object, $property, $args = [] ) {
 		$r = new ReflectionMethod( get_class($object), $property );

@@ -11,7 +11,7 @@
         "rmccue/requests": ">=1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "~6.0"
     },
     "homepage": "https://developers.supportbee.com/",
     "authors": [
