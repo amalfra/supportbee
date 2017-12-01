@@ -2,7 +2,6 @@ SupportBee API
 ========
 [![GitHub release](https://img.shields.io/github/release/amalfra/supportbee.svg)](https://github.com/amalfra/supportbee/releases)
 [![Build Status](https://travis-ci.org/amalfra/supportbee.svg?branch=master)](https://travis-ci.org/amalfra/supportbee)
-[![Coverage Badge](https://api.shippable.com/projects/55fede0f1895ca447416a7dd/coverageBadge?branch=master)](https://app.shippable.com/projects/55fede0f1895ca447416a7dd)
 
 A PHP wrapper for the SupportBee REST API.
 
