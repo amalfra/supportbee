@@ -11,7 +11,7 @@ A PHP wrapper for the SupportBee REST API.
 In your project root, run the following:
 
 ```sh
-composer require supportbee/supportbee dev-master
+composer require supportbee/supportbee
 ```
 
 This will create a `vendor` directory (if you dont already have one), and set up the autoloading classmap.
