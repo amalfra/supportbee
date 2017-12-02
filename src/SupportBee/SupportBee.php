@@ -135,6 +135,10 @@ class SupportBee {
     return Comments::comments($id);
   }
 
+  public function createComment($ticket_id = 0, $options = array()) {
+    return Comments::create_comment($ticket_id);
+  }
+
   public function agents($options = array()) {
     if (!is_array($options))
       $options = array('with_invited' => $options);

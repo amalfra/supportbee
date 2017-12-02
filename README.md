@@ -77,6 +77,7 @@ All method names follow Camel Casing.
 ### Comment
 
  1. *comments* - Retrieves all the comments of the ticket with id ticket_id.
+ 2. *createComment* - Create a comment to the ticket with id ticket_id. Pass the information for comment as associative array in second parameter.
 
 ### Agent
 
