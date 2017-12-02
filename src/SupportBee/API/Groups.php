@@ -12,12 +12,11 @@ use SupportBee\API as API;
  */
 class Groups extends API {
 
-  public static function groups( $options = array() )
-  {
-    self::validate( $options, array(
+  public static function groups($options = array()) {
+    self::validate($options, array(
       'with_users', 'user'
-    ) );
+    ));
 
-    return self::process_request( 'groups', $options );
+    return self::process_request('groups', $options);
   }
 }

@@ -12,8 +12,7 @@ use SupportBee\API as API;
  */
 class Comments extends API {
 
-  public static function comments( $id = 0 )
-  {
-    return self::process_request( 'tickets/'.$id.'/comments' );
+  public static function comments($id = 0) {
+    return self::process_request('tickets/'.$id.'/comments');
   }
 }

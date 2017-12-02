@@ -12,8 +12,7 @@ use SupportBee\API as API;
  */
 class Snippets extends API {
 
-  public static function snippets()
-  {
-    return self::process_request( 'snippets' );
+  public static function snippets() {
+    return self::process_request('snippets');
   }
 }

@@ -12,17 +12,15 @@ use SupportBee\API as API;
  */
 class Agents extends API {
 
-  public static function agents( $options = array() )
-  {
-    self::validate( $options, array(
+  public static function agents($options = array()) {
+    self::validate($options, array(
       'with_invited'
-    ) );
+    ));
 
-    return self::process_request( 'users', $options );
+    return self::process_request('users', $options);
   }
 
-  public static function get_agent( $id = 0 )
-  {
-    return self::process_request( 'users/'.$id );
+  public static function get_agent($id = 0) {
+    return self::process_request('users/'.$id);
   }
 }

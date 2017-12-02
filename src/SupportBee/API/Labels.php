@@ -12,8 +12,7 @@ use SupportBee\API as API;
  */
 class Labels extends API {
 
-  public static function labels()
-  {
-    return self::process_request( 'labels' );
+  public static function labels() {
+    return self::process_request('labels');
   }
 }

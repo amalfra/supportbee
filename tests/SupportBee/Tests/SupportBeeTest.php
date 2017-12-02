@@ -14,8 +14,8 @@ class SupportBeeTest extends TestCase {
     try {		
       $supportbee = new SupportBee();
       $this->fail();
-    } catch ( ConfigException $e ) {
-      $this->assertTrue( TRUE );
+    } catch (ConfigException $e) {
+      $this->assertTrue(true);
     }
   }
 
@@ -27,8 +27,8 @@ class SupportBeeTest extends TestCase {
       );
       $supportbee = new SupportBee($config);
       $this->fail();
-    } catch ( ConfigException $e ) {
-      $this->assertTrue( TRUE );
+    } catch (ConfigException $e) {
+      $this->assertTrue(true);
     }
   }
 
@@ -40,8 +40,8 @@ class SupportBeeTest extends TestCase {
       );
       $supportbee = new SupportBee($config);
       $this->fail();
-    } catch ( ConfigException $e ) {
-      $this->assertTrue( TRUE );
+    } catch (ConfigException $e) {
+      $this->assertTrue(true);
     }
   }
   
@@ -53,8 +53,8 @@ class SupportBeeTest extends TestCase {
       );
       $supportbee = new SupportBee($config);
       $this->fail();
-    } catch ( ConfigException $e ) {
-      $this->assertTrue( TRUE );
+    } catch (ConfigException $e) {
+      $this->assertTrue(true);
     }
   }
 
@@ -66,8 +66,8 @@ class SupportBeeTest extends TestCase {
       );
       $supportbee = new SupportBee($config);
       $this->fail();
-    } catch ( ConfigException $e ) {
-      $this->assertTrue( TRUE );
+    } catch (ConfigException $e) {
+      $this->assertTrue(true);
     }
   }
 

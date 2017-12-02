@@ -12,8 +12,7 @@ use SupportBee\API as API;
  */
 class WebHooks extends API {
 
-  public static function webhooks()
-  {
-    return self::process_request( 'web_hooks' );
+  public static function webhooks() {
+    return self::process_request('web_hooks');
   }
 }
