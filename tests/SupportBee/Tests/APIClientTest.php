@@ -9,83 +9,83 @@ use \InvalidArgumentException;
 
 class APIClientTest extends TestCase {
 
-	private function getProtectedProperty( $object, $property, $args = [] ) {
-		$r = new ReflectionMethod( get_class($object), $property );
-		$r->setAccessible( true );
-		return $r->invokeArgs( $object, $args );
+  private function getProtectedProperty( $object, $property, $args = [] ) {
+    $r = new ReflectionMethod( get_class($object), $property );
+    $r->setAccessible( true );
+    return $r->invokeArgs( $object, $args );
   }
 
-	// validate() tests start
+  // validate() tests start
 
-	/** @test */
-	public function validateThrowExecptionNotArrayParamPassed() {
-		$api = new API();
+  /** @test */
+  public function validateThrowExecptionNotArrayParamPassed() {
+    $api = new API();
 
-		try {		
-			$this->getProtectedProperty( $api, 'validate', ['notArr'] );
-			$this->fail();
-		} catch ( InvalidArgumentException $e ) {
-			$this->assertTrue( TRUE );
+    try {		
+      $this->getProtectedProperty( $api, 'validate', ['notArr'] );
+      $this->fail();
+    } catch ( InvalidArgumentException $e ) {
+      $this->assertTrue( TRUE );
     }
-	}
+  }
 
-	/** @test */
-	public function validateThrowExecptionNoValidParam() {
-		$api = new API();
+  /** @test */
+  public function validateThrowExecptionNoValidParam() {
+    $api = new API();
 
-		try {		
-			$this->getProtectedProperty( $api, 'validate', [['p1' => '1', 'p2' => '2'], ['p1']] );
-			$this->fail();
-		} catch ( InvalidArgumentException $e ) {
-			$this->assertTrue( TRUE );
+    try {		
+      $this->getProtectedProperty( $api, 'validate', [['p1' => '1', 'p2' => '2'], ['p1']] );
+      $this->fail();
+    } catch ( InvalidArgumentException $e ) {
+      $this->assertTrue( TRUE );
     }
-	}
+  }
 
-	/** @test */
-	public function validateThrowExecptionNoRequiredParam() {
-		$api = new API();
+  /** @test */
+  public function validateThrowExecptionNoRequiredParam() {
+    $api = new API();
 
-		try {		
-			$this->getProtectedProperty( $api, 'validate', [['p1' => '1'], ['p1', 'p2'], ['p2']] );
-			$this->fail();
-		} catch ( InvalidArgumentException $e ) {
-			$this->assertTrue( TRUE );
+    try {		
+      $this->getProtectedProperty( $api, 'validate', [['p1' => '1'], ['p1', 'p2'], ['p2']] );
+      $this->fail();
+    } catch ( InvalidArgumentException $e ) {
+      $this->assertTrue( TRUE );
     }
-	}
+  }
 
-	// validate() tests end
+  // validate() tests end
 
-	// tfTostring() tests start
+  // tfTostring() tests start
 
-	/** @test */
-	public function validateTfTostring() {
-		$api = new API();
-		$var = true;
+  /** @test */
+  public function validateTfTostring() {
+    $api = new API();
+    $var = true;
 
-		$this->getProtectedProperty( $api, 'tfTostring', [&$var, &$var] );
-		
-		if ( gettype($var) === 'string' )
-			$this->assertTrue( TRUE );
-		else
-			$this->fail();
-	}
+    $this->getProtectedProperty( $api, 'tfTostring', [&$var, &$var] );
+    
+    if ( gettype($var) === 'string' )
+      $this->assertTrue( TRUE );
+    else
+      $this->fail();
+  }
 
-	// tfTostring() tests end
+  // tfTostring() tests end
 
-	// inject() tests start
+  // inject() tests start
 
-	/** @test */
-	public function validateInject() {
-		$api = new API();
-		$var = array( 'val1' => 'key1' );
+  /** @test */
+  public function validateInject() {
+    $api = new API();
+    $var = array( 'val1' => 'key1' );
 
-		$this->getProtectedProperty( $api, 'inject', [&$var] );
+    $this->getProtectedProperty( $api, 'inject', [&$var] );
 
-		if ( array_key_exists( 'auth_token', $var ) )
-			$this->assertTrue( TRUE );
-		else
-			$this->fail();
-	}
+    if ( array_key_exists( 'auth_token', $var ) )
+      $this->assertTrue( TRUE );
+    else
+      $this->fail();
+  }
 
-	// inject() tests end
+  // inject() tests end
 }
