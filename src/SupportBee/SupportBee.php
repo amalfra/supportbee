@@ -12,6 +12,7 @@ use SupportBee\API\Groups as Groups;
 use SupportBee\API\Snippets as Snippets;
 use SupportBee\API\WebHooks as WebHooks;
 use SupportBee\API\Reports as Reports;
+use SupportBee\API\Emails as Emails;
 
 /**
  * Class SupportBee
@@ -136,7 +137,7 @@ class SupportBee {
   }
 
   public function createComment($ticket_id = 0, $options = array()) {
-    return Comments::create_comment($ticket_id);
+    return Comments::create_comment($ticket_id, $options);
   }
 
   public function agents($options = array()) {
@@ -176,5 +177,13 @@ class SupportBee {
 
   public function repliesCountReport($options = array()) {
     return Reports::replies_count_report($options);
+  }
+
+  public function emails() {
+    return Emails::emails();
+  }
+
+  public function createEmail($options = array()) {
+    return Emails::create_email($options);
   }
 }

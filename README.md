@@ -52,7 +52,7 @@ Incase of multiple paramters : Pass as an associative array.
 All method names follow Camel Casing.
 
 
-### Ticket
+### Tickets
  1. *tickets* - Returns 15 tickets of the company in the order of their last activity. Only tickets that are not archived are returned (please see optional parameters to get archived tickets).
  2. *ticket* - Retrieves the ticket specified by the id.
  3. *searchTickets* - Returns 15 tickets of the company in the order of their last activity matching the search query.
@@ -70,21 +70,21 @@ All method names follow Camel Casing.
  15. *addLabelToTicket* - Adds label to ticket. You can pass the ticket_id and label name as parameters.
  16. *removeLabelFromTicket* - Removes label from ticket. You can pass the ticket_id and label name as parameters.
 
-### Reply
+### Replies
  1. *replies* - Retrieves all the replies of the ticket with id ticket_id.
  2. *reply* - Retrieves the reply for ticket specified by the ticket_id with id.
 
-### Comment
+### Comments
 
  1. *comments* - Retrieves all the comments of the ticket with id ticket_id.
  2. *createComment* - Create a comment to the ticket with id ticket_id. Pass the information for comment as associative array in second parameter.
 
-### Agent
+### Agents
 
  1. *agents* - Retrieves all confirmed agents of the company.
  2. *agent* - Retrieves the agent for company specified by the id.
 
-### Label
+### Labels
 
  1. *labels* - Retrieves all the custom labels of a company.
 
@@ -105,6 +105,11 @@ All method names follow Camel Casing.
  1. *avgFirstResponseTimeReport* - Returns data points for average first response time.
  2. *ticketsCountReport* - Returns data points for tickets count.
  3. *repliesCountReport* - Returns data points for replies count.
+
+### Emails
+
+ 1. *emails* - Returns all the emails of the company.
+ 2. *createEmail* - Creates an email for the company. Pass the information for email as associative array in second parameter.
 
 ## Development
 
