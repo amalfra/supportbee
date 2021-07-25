@@ -1,5 +1,5 @@
 {
-    "name": "supportbee/supportbee",
+    "name": "amalfra/supportbee",
     "description": "A PHP library for interacting with SupportBee API",
     "type": "library",
     "license": "MIT",
@@ -7,7 +7,7 @@
         "supportbee"
     ],
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.4.0",
         "rmccue/requests": ">=1.0"
     },
     "require-dev": {
