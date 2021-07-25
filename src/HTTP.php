@@ -1,17 +1,17 @@
 <?php
 
-namespace SupportBee;
+namespace Amalfra\SupportBee;
 
 use \InvalidArgumentException;
 use \Requests;
-use SupportBee\Exceptions\HTTPException as HTTPException;
+use Exceptions\HTTPException as HTTPException;
 
 /**
- * Class API
+ * Class HTTP
  *
- * @package SupportBee\API
+ * @package Amalfra\SupportBee
  */
-class API {
+class HTTP {
 
   protected static $http_error_msgs = array(
     401 => 'There was an error authenticating with the token.',
@@ -43,17 +43,17 @@ class API {
 
   protected static function inject(&$options) {
     $options = array_merge($options, array(
-      'auth_token' => SupportBee::$auth_token
+      'auth_token' => Client::$auth_token
     ));
   }
 
   private static function request($path, $options, $method = 'GET') {
     if (strtoupper($method) == 'GET')
-      return Requests::get(SupportBee::$base_url.$path.'?'.http_build_query($options), SupportBee::$headers, $options);
+      return Requests::get(Client::$base_url.$path.'?'.http_build_query($options), Client::$headers, $options);
     else if (strtoupper($method) == 'POST')
-      return Requests::post(SupportBee::$base_url.$path, SupportBee::$headers, json_encode($options));
+      return Requests::post(Client::$base_url.$path, Client::$headers, json_encode($options));
     else if (strtoupper($method) == 'DELETE')
-      return Requests::delete(SupportBee::$base_url.$path.'?'.http_build_query($options), SupportBee::$headers, $options);
+      return Requests::delete(Client::$base_url.$path.'?'.http_build_query($options), Client::$headers, $options);
     else
       throw new Exception('Unknown HTTP request method');
   }

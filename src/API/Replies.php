@@ -1,16 +1,15 @@
 <?php
 
-namespace SupportBee\API;
+namespace Amalfra\SupportBee\API;
 
-use SupportBee\SupportBee as SupportBee;
-use SupportBee\API as API;
+use Amalfra\SupportBee\HTTP;
 
 /**
  * Class Replies
  *
- * @package SupportBee\API\Replies
+ * @package Amalfra\SupportBee\API
  */
-class Replies extends API {
+class Replies extends HTTP {
 
   public static function replies($id = 0) {
     return self::process_request('tickets/'.$id.'/replies');

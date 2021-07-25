@@ -2,3 +2,5 @@ vendor
 test.php
 *~
 phpunit.xml
+*.cache
+*.bak

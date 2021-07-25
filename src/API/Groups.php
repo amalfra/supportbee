@@ -1,16 +1,15 @@
 <?php
 
-namespace SupportBee\API;
+namespace Amalfra\SupportBee\API;
 
-use SupportBee\SupportBee as SupportBee;
-use SupportBee\API as API;
+use Amalfra\SupportBee\HTTP;
 
 /**
  * Class Groups
  *
- * @package SupportBee\API\Groups
+ * @package Amalfra\SupportBee\API
  */
-class Groups extends API {
+class Groups extends HTTP {
 
   public static function groups($options = array()) {
     self::validate($options, array(

@@ -1,26 +1,25 @@
 <?php
 
-namespace SupportBee;
+namespace Amalfra\SupportBee;
 
-use SupportBee\Exceptions\ConfigException as ConfigException;
-use SupportBee\API\Tickets as Tickets;
-use SupportBee\API\Replies as Replies;
-use SupportBee\API\Comments as Comments;
-use SupportBee\API\Agents as Agents;
-use SupportBee\API\Labels as Labels;
-use SupportBee\API\Groups as Groups;
-use SupportBee\API\Snippets as Snippets;
-use SupportBee\API\WebHooks as WebHooks;
-use SupportBee\API\Reports as Reports;
-use SupportBee\API\Emails as Emails;
+use Amalfra\SupportBee\Exceptions\ConfigException;
+use Amalfra\SupportBee\API\Tickets;
+use Amalfra\SupportBee\API\Replies;
+use Amalfra\SupportBee\API\Comments;
+use Amalfra\SupportBee\API\Agents;
+use Amalfra\SupportBee\API\Labels;
+use Amalfra\SupportBee\API\Groups;
+use Amalfra\SupportBee\API\Snippets;
+use Amalfra\SupportBee\API\WebHooks;
+use Amalfra\SupportBee\API\Reports;
+use Amalfra\SupportBee\API\Emails;
 
 /**
- * Class SupportBee
+ * Class Client
  *
- * @package SupportBee
+ * @package Amalfra\SupportBee
  */
-class SupportBee {
-  const VERSION = '1.0.0';
+class Client {
   const BASE    = 'https://COMPANY.supportbee.com/';
 
   public static $base_url   = null;

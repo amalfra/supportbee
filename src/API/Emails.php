@@ -1,16 +1,15 @@
 <?php
 
-namespace SupportBee\API;
+namespace Amalfra\SupportBee\API;
 
-use SupportBee\SupportBee as SupportBee;
-use SupportBee\API as API;
+use Amalfra\SupportBee\HTTP;
 
 /**
  * Class Emails
  *
- * @package SupportBee\API\Emails
+ * @package Amalfra\SupportBee\API
  */
-class Emails extends API {
+class Emails extends HTTP {
 
   public static function emails() {
     return self::process_request('emails');

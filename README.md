@@ -23,7 +23,7 @@ You can load the wrapper classes using namespace as:
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
-use \SupportBee\SupportBee;
+use \Amalfra\SupportBee\Client as SupportBee;
 ```
 
 Now create a new object

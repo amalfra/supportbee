@@ -1,17 +1,16 @@
 <?php
 
-namespace SupportBee\API;
+namespace Amalfra\SupportBee\API;
 
-use SupportBee\SupportBee as SupportBee;
-use SupportBee\API as API;
+use Amalfra\SupportBee\HTTP;
 use \InvalidArgumentException;
 
 /**
  * Class Tickets
  *
- * @package SupportBee\API\Tickets
+ * @package Amalfra\SupportBee\API;
  */
-class Tickets extends API {
+class Tickets extends HTTP {
 
   public static function tickets($options = array()) {
     self::validate($options, array(

@@ -1,18 +1,18 @@
 <?php
 
-namespace SupportBee\Tests;
+namespace Amalfra\SupportBee\Tests;
 
-use SupportBee\SupportBee as SupportBee;
-use SupportBee\Exceptions\ConfigException as ConfigException;
+use Amalfra\SupportBee\Client;
+use Amalfra\SupportBee\Exceptions\ConfigException;
 use \PHPUnit\Framework\TestCase;
 
-class SupportBeeTest extends TestCase {
+class ClientTest extends TestCase {
   // __construct() tests start
 
   /** @test */
   public function validateObjectCreationWithoutTokenAndCompany() {
     try {		
-      $supportbee = new SupportBee();
+      $supportbee = new Client();
       $this->fail();
     } catch (ConfigException $e) {
       $this->assertTrue(true);
@@ -25,7 +25,7 @@ class SupportBeeTest extends TestCase {
       $config = array(
         'company' => 'my-company'
       );
-      $supportbee = new SupportBee($config);
+      $supportbee = new Client($config);
       $this->fail();
     } catch (ConfigException $e) {
       $this->assertTrue(true);
@@ -38,7 +38,7 @@ class SupportBeeTest extends TestCase {
       $config = array(
         'company' => 'abcd'
       );
-      $supportbee = new SupportBee($config);
+      $supportbee = new Client($config);
       $this->fail();
     } catch (ConfigException $e) {
       $this->assertTrue(true);
@@ -51,7 +51,7 @@ class SupportBeeTest extends TestCase {
       $config = array(
         'company' => 'abcd34$%'
       );
-      $supportbee = new SupportBee($config);
+      $supportbee = new Client($config);
       $this->fail();
     } catch (ConfigException $e) {
       $this->assertTrue(true);
@@ -64,7 +64,7 @@ class SupportBeeTest extends TestCase {
       $config = array(
         'token' => 'abcd34$%'
       );
-      $supportbee = new SupportBee($config);
+      $supportbee = new Client($config);
       $this->fail();
     } catch (ConfigException $e) {
       $this->assertTrue(true);
@@ -77,12 +77,12 @@ class SupportBeeTest extends TestCase {
       'token' => 'abcd',
       'company' => 'mycompany'
     );
-    $supportbee = new SupportBee($config);
-    $this->assertEquals('https://mycompany.supportbee.com/', SupportBee::$base_url);
+    $supportbee = new Client($config);
+    $this->assertEquals('https://mycompany.supportbee.com/', Client::$base_url);
     $this->assertEquals(array(
       'Content-Type' => 'application/json',
       'Accept'       => 'application/json'
-    ), SupportBee::$headers);
+    ), Client::$headers);
   }
 
   // __construct() tests end

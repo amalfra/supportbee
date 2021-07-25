@@ -1,16 +1,15 @@
 <?php
 
-namespace SupportBee\API;
+namespace Amalfra\SupportBee\API;
 
-use SupportBee\SupportBee as SupportBee;
-use SupportBee\API as API;
+use Amalfra\SupportBee\HTTP;
 
 /**
  * Class Agents
  *
- * @package SupportBee\API\Agents
+ * @package Amalfra\SupportBee\API
  */
-class Agents extends API {
+class Agents extends HTTP {
 
   public static function agents($options = array()) {
     self::validate($options, array(

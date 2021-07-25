@@ -1,13 +1,13 @@
 <?php
 
-namespace SupportBee\Tests;
+namespace Amalfra\SupportBee\Tests;
 
-use SupportBee\API as API;
+use Amalfra\SupportBee\HTTP;
 use \PHPUnit\Framework\TestCase;
 use \ReflectionMethod;
 use \InvalidArgumentException;
 
-class APIClientTest extends TestCase {
+class HTTPTest extends TestCase {
 
   private function getProtectedProperty($object, $property, $args = []) {
     $r = new ReflectionMethod(get_class($object), $property);
@@ -19,7 +19,7 @@ class APIClientTest extends TestCase {
 
   /** @test */
   public function validateThrowExecptionNotArrayParamPassed() {
-    $api = new API();
+    $api = new HTTP();
 
     try {		
       $this->getProtectedProperty($api, 'validate', ['notArr']);
@@ -31,7 +31,7 @@ class APIClientTest extends TestCase {
 
   /** @test */
   public function validateThrowExecptionNoValidParam() {
-    $api = new API();
+    $api = new HTTP();
 
     try {		
       $this->getProtectedProperty($api, 'validate', [['p1' => '1', 'p2' => '2'], ['p1']]);
@@ -43,7 +43,7 @@ class APIClientTest extends TestCase {
 
   /** @test */
   public function validateThrowExecptionNoRequiredParam() {
-    $api = new API();
+    $api = new HTTP();
 
     try {		
       $this->getProtectedProperty($api, 'validate', [['p1' => '1'], ['p1', 'p2'], ['p2']]);
@@ -59,7 +59,7 @@ class APIClientTest extends TestCase {
 
   /** @test */
   public function validateTfTostring() {
-    $api = new API();
+    $api = new HTTP();
     $var = true;
 
     $this->getProtectedProperty($api, 'tfTostring', [&$var, &$var]);
@@ -76,7 +76,7 @@ class APIClientTest extends TestCase {
 
   /** @test */
   public function validateInject() {
-    $api = new API();
+    $api = new HTTP();
     $var = array('val1' => 'key1');
 
     $this->getProtectedProperty($api, 'inject', [&$var]);
