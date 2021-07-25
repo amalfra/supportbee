@@ -49,11 +49,11 @@ class Client {
     if (count($config) == 0)
       throw new ConfigException('Auth token and company need to be set.');
 
-    if (!isset($config['token'] ) || !ctype_alnum($config['token']))
-      throw new ConfigException('Invalid Token.');
+    if (!isset($config['token']))
+      throw new ConfigException('Token is required.');
 
-    if (!isset($config['company']) || !ctype_alnum($config['company']))
-      throw new ConfigException('Invalid Company name.');
+    if (!isset($config['company']))
+      throw new ConfigException('Company name is required.');
   }
 
   public function tickets($options = array()) {
