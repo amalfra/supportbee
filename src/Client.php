@@ -46,14 +46,17 @@ class Client {
    * @throws  SupportBee\Exceptions\ConfigException    When a config value does not meet its validation criteria
    */
   private function validate($config) {
-    if (count($config) == 0)
+    if (count($config) == 0) {
       throw new ConfigException('Auth token and company need to be set.');
+    }
 
-    if (!isset($config['token']))
+    if (!isset($config['token'])) {
       throw new ConfigException('Token is required.');
+    }
 
-    if (!isset($config['company']))
+    if (!isset($config['company'])) {
       throw new ConfigException('Company name is required.');
+    }
   }
 
   public function tickets($options = array()) {
@@ -117,8 +120,9 @@ class Client {
   }
 
   public function searchTickets($options = array()) {
-    if (!is_array($options))
+    if (!is_array($options)) {
       $options = array('query' => $options);
+    }
 
     return Tickets::search($options);
   }
@@ -140,8 +144,9 @@ class Client {
   }
 
   public function agents($options = array()) {
-    if (!is_array($options))
+    if (!is_array($options)) {
       $options = array('with_invited' => $options);
+    }
 
     return Agents::agents($options);
   }
