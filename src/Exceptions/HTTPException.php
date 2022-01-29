@@ -10,5 +10,4 @@ use \Exception;
  * @package Amalfra\SupportBee\Exceptions
  */
 class HTTPException extends Exception {
-
 }
