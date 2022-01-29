@@ -3,8 +3,8 @@
 namespace Amalfra\SupportBee;
 
 use \InvalidArgumentException;
-use \Requests;
-use Exceptions\HTTPException as HTTPException;
+use WpOrg\Requests\Requests;
+use Amalfra\SupportBee\Exceptions\HTTPException as HTTPException;
 
 /**
  * Class HTTP
@@ -12,7 +12,6 @@ use Exceptions\HTTPException as HTTPException;
  * @package Amalfra\SupportBee
  */
 class HTTP {
-
   protected static $http_error_msgs = array(
     401 => 'There was an error authenticating with the token.',
     403 => 'There was an error authenticating with the token.',
@@ -20,25 +19,29 @@ class HTTP {
   );
 
   protected static function validate($options = array(), $valid = array(), $required = array()) {
-    if (!is_array($options))
+    if (!is_array($options)) {
       throw new InvalidArgumentException('Parameters need to be passed as array');
+    }
 
     $options = array_keys($options);
 
-    foreach($options as $k => $v) {
-      if (!in_array( $v, $valid))
-        throw new InvalidArgumentException( 'Not a valid parameter passed' );
+    foreach ($options as $k => $v) {
+      if (!in_array($v, $valid)) {
+        throw new InvalidArgumentException('Not a valid parameter passed');
+      }
     }
 
-    if (count($required) && !array_intersect($options, $required))
-      throw new InvalidArgumentException( 'Required parameter not passed' );
+    if (count($required) && !array_intersect($options, $required)) {
+      throw new InvalidArgumentException('Required parameter not passed');
+    }
   }
 
-  protected static function tfTostring(&$value, &$key) {
-    if ($value === true)
+  protected static function tfTostring(&$value, $key) {
+    if ($value === true) {
       $value = 'true';
-    else if ($value === false)
+    } else if ($value === false) {
       $value = 'false';
+    }
   }
 
   protected static function inject(&$options) {
@@ -48,36 +51,34 @@ class HTTP {
   }
 
   private static function request($path, $options, $method = 'GET') {
-    if (strtoupper($method) == 'GET')
+    if (strtoupper($method) == 'GET') {
       return Requests::get(Client::$base_url.$path.'?'.http_build_query($options), Client::$headers, $options);
-    else if (strtoupper($method) == 'POST')
+    } else if (strtoupper($method) == 'POST') {
       return Requests::post(Client::$base_url.$path, Client::$headers, json_encode($options));
-    else if (strtoupper($method) == 'DELETE')
+    } else if (strtoupper($method) == 'DELETE') {
       return Requests::delete(Client::$base_url.$path.'?'.http_build_query($options), Client::$headers, $options);
-    else
-      throw new Exception('Unknown HTTP request method');
+    } else {
+      throw new HTTPException('Unknown HTTP request method');
+    }
   }
 
   protected static function handle_response($resp) {
-    if ($resp->status_code != 200) {
-      if ($resp->status_code == 204)
-        return true;
+    if ($resp->status_code == 204) {
+      return true;
+    }
 
-      $decoded = @json_decode($resp->body, true);
-
-      if (!$decoded)
-        throw new HTTPException((isset(self::$http_error_msgs[$resp->status_code])) ?
-          self::$http_error_msgs[$resp->status_code] : 'An HTTP error with status code '.$resp->status_code.' occured');
-      else
-        return $decoded;
+    $decoded = @json_decode($resp->body, true);
+    if (!$decoded) {
+      throw new HTTPException((isset(self::$http_error_msgs[$resp->status_code])) ?
+        self::$http_error_msgs[$resp->status_code] : 'An HTTP error with status code '. $resp->status_code .' occured');
     } else {
-      return json_decode($resp->body, true);
+      return $decoded;
     }
   }
 
   protected static function process_request($path, $options = array(), $method = 'GET') {
     self::inject($options);
-    array_walk($options,'self::tfTostring');
+    array_walk($options, 'self::tfTostring');
 
     $resp = self::request($path, $options, $method);
     return self::handle_response($resp);
