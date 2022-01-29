@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class WebHooks extends HTTP {
-
   public static function webhooks() {
     return self::process_request('web_hooks');
   }

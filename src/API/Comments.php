@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Comments extends HTTP {
-
   public static function comments($id = 0) {
     return self::process_request('tickets/'.$id.'/comments');
   }
@@ -21,12 +20,15 @@ class Comments extends HTTP {
     ), array('html', 'text'));
 
     $body = array('content' => array());
-    if (isset($body['html']))
+    if (isset($body['html'])) {
       $body['content']['html'] = $options['html'];
-    if (isset($body['text']))
+    }
+    if (isset($body['text'])) {
       $body['content']['text'] = $options['text'];
-    if (isset($body['attachment_ids']))
+    }
+    if (isset($body['attachment_ids'])) {
       $body['content']['attachment_ids'] = $options['attachment_ids'];
+    }
 
     return self::process_request('tickets/'.$ticket_id.'/comments', array('comment' => $body), 'POST');
   }

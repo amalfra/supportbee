@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Agents extends HTTP {
-
   public static function agents($options = array()) {
     self::validate($options, array(
       'with_invited'

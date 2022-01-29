@@ -2,8 +2,8 @@
 
 namespace Amalfra\SupportBee\API;
 
-use Amalfra\SupportBee\HTTP;
 use \InvalidArgumentException;
+use Amalfra\SupportBee\HTTP;
 
 /**
  * Class Tickets
@@ -11,7 +11,6 @@ use \InvalidArgumentException;
  * @package Amalfra\SupportBee\API;
  */
 class Tickets extends HTTP {
-
   public static function tickets($options = array()) {
     self::validate($options, array(
       'per_page', 'page', 'archived', 'spam',
@@ -31,7 +30,7 @@ class Tickets extends HTTP {
     self::validate($options, array(
       'per_page', 'page', 'spam',
       'trash', 'query'
-    ), array( 'query' ));
+    ), array('query'));
 
     return self::process_request('tickets/search', $options);
   }
@@ -58,8 +57,9 @@ class Tickets extends HTTP {
   }
 
   public static function assign_ticket($id = 0, $options = array()) {
-    if (!is_array($options) || !is_int($id))
+    if (!is_array($options) || !is_int($id)) {
       throw new InvalidArgumentException('Invalid type of Parameters passed');
+    }
 
     return self::process_request('tickets/'.$id.'/assignments', array('assignment' => $options), 'POST' );
   }

@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Labels extends HTTP {
-
   public static function labels() {
     return self::process_request('labels');
   }

@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Reports extends HTTP {
-
   public static function avg_first_response_time_report($options = array()) {
     self::validate($options, array(
       'user', 'team', 'label', 'since', 'until'

@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Replies extends HTTP {
-
   public static function replies($id = 0) {
     return self::process_request('tickets/'.$id.'/replies');
   }

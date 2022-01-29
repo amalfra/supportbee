@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Emails extends HTTP {
-
   public static function emails() {
     return self::process_request('emails');
   }

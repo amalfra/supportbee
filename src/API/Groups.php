@@ -10,7 +10,6 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Groups extends HTTP {
-
   public static function groups($options = array()) {
     self::validate($options, array(
       'with_users', 'user'

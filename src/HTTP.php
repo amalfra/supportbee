@@ -70,7 +70,7 @@ class HTTP {
     $decoded = @json_decode($resp->body, true);
     if (!$decoded) {
       throw new HTTPException((isset(self::$http_error_msgs[$resp->status_code])) ?
-        self::$http_error_msgs[$resp->status_code] : 'An HTTP error with status code '. $resp->status_code .' occured');
+        self::$http_error_msgs[$resp->status_code] : 'An HTTP error with status code '.$resp->status_code.' occured');
     } else {
       return $decoded;
     }
