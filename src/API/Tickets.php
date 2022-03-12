@@ -15,8 +15,8 @@ class Tickets extends HTTP {
     self::validate($options, array(
       'per_page', 'page', 'archived', 'spam',
       'trash', 'replies', 'max_replies', 'assigned_user',
-      'assigned_group', 'starred', 'label', 'since',
-      'until', 'requester_emails'
+      'assigned_team', 'starred', 'label', 'since',
+      'until', 'sort_by', 'requester_emails', 'total_only'
     ));
 
     return self::process_request('tickets', $options);
@@ -37,7 +37,7 @@ class Tickets extends HTTP {
 
   public static function create_ticket($options = array()) {
     self::validate($options, array(
-      'subject', 'requester_name', 'requester_email', 'copied_emails',
+      'subject', 'requester_name', 'requester_email', 'cc', 'copied_emails', 'bcc',
       'notify_requester', 'content', 'attachment_ids', 'forwarding_address_id'
     ), array('subject', 'requester_name', 'requester_email', 'content'));
 
@@ -87,11 +87,11 @@ class Tickets extends HTTP {
   public static function untrash_ticket($id = 0) {
     return self::process_request('tickets/'.$id.'/trash', array(), 'DELETE');
   }
-  
+
   public static function add_label($id, $label) {
     return self::process_request('tickets/'.$id.'/labels/'.$label, array(), 'POST');
   }
-  
+
   public static function remove_label($id, $label) {
     return self::process_request('tickets/'.$id.'/labels/'.$label, array(), 'DELETE');
   }
