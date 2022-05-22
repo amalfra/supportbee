@@ -64,10 +64,11 @@ class HTTPTest extends TestCase {
 
     $this->getProtectedProperty($api, 'tfTostring', [&$var, &$var]);
     
-    if (gettype($var) === 'string')
+    if (gettype($var) === 'string') {
       $this->assertTrue(true);
-    else
+    } else {
       $this->fail();
+    }
   }
 
   // tfTostring() tests end
@@ -81,10 +82,11 @@ class HTTPTest extends TestCase {
 
     $this->getProtectedProperty($api, 'inject', [&$var]);
 
-    if (array_key_exists('auth_token', $var))
+    if (array_key_exists('auth_token', $var)) {
       $this->assertTrue(true);
-    else
+    } else {
       $this->fail();
+    }
   }
 
   // inject() tests end
