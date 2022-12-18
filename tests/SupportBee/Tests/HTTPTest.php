@@ -2,13 +2,13 @@
 
 namespace Amalfra\SupportBee\Tests;
 
-use Amalfra\SupportBee\HTTP;
 use \PHPUnit\Framework\TestCase;
 use \ReflectionMethod;
 use \InvalidArgumentException;
+use Amalfra\SupportBee\HTTP;
+use Amalfra\SupportBee\Exceptions\HTTPException;
 
 class HTTPTest extends TestCase {
-
   private function getProtectedProperty($object, $property, $args = []) {
     $r = new ReflectionMethod(get_class($object), $property);
     $r->setAccessible(true);
@@ -58,11 +58,25 @@ class HTTPTest extends TestCase {
   // tfTostring() tests start
 
   /** @test */
-  public function validateTfTostring() {
+  public function validatetf_to_string() {
     $api = new HTTP();
     $var = true;
 
-    $this->getProtectedProperty($api, 'tfTostring', [&$var, &$var]);
+    $this->getProtectedProperty($api, 'tf_to_string', [&$var, &$var]);
+    
+    if (gettype($var) === 'string') {
+      $this->assertTrue(true);
+    } else {
+      $this->fail();
+    }
+  }
+
+  /** @test */
+  public function validatetf_to_stringValueFalse() {
+    $api = new HTTP();
+    $var = false;
+
+    $this->getProtectedProperty($api, 'tf_to_string', [&$var, &$var]);
     
     if (gettype($var) === 'string') {
       $this->assertTrue(true);
@@ -90,4 +104,75 @@ class HTTPTest extends TestCase {
   }
 
   // inject() tests end
+
+  // handle_response() tests start
+
+  /** @test */
+  public function validateHandle_response() {
+    $api = new HTTP();
+    $mock = $this->getMockBuilder('Response')
+              ->disableOriginalConstructor()
+              ->getMock();
+    $mock->status_code = 204;
+
+    $this->assertTrue($this->getProtectedProperty($api, 'handle_response', [&$mock]));
+  }
+
+  /** @test */
+  public function validateHandle_responseInvalid() {
+    $api = new HTTP();
+    $mock = $this->getMockBuilder('Response')
+              ->disableOriginalConstructor()
+              ->getMock();
+    $mock->status_code = 400;
+    $mock->body = 'abcd';
+
+    try {
+      $this->assertTrue($this->getProtectedProperty($api, 'handle_response', [&$mock]));
+    } catch (HTTPException $e) {
+      $this->assertStringContainsStringIgnoringCase('An HTTP error with status code', $e->getMessage());
+    }
+  }
+
+  // handle_response() tests end
+
+  // request() tests start
+
+  /** @test */
+  public function validaterequestThrowExecptionUnknownMethod() {
+    $api = new HTTP();
+
+    try {		
+      $this->getProtectedProperty($api, 'request', ['/path', [], 'BLAH']);
+      $this->fail();
+    } catch (HTTPException $e) {
+      $this->assertTrue(true);
+    }
+  }
+
+  /** @test */
+  public function validaterequestGETMethod() {
+    $api = new HTTP();
+	
+    $resp = $this->getProtectedProperty($api, 'request', ['/accessories', [], 'GET']);
+    $this->assertNotNull($resp->body);
+  }
+
+  /** @test */
+  public function validaterequestPOSTMethod() {
+    $api = new HTTP();
+	
+    $resp = $this->getProtectedProperty($api, 'request', ['/accessories', [], 'POST']);
+    $this->assertNotNull($resp->body);
+  }
+
+  /** @test */
+  public function validaterequestDELETEMethod() {
+    $api = new HTTP();
+	
+    $resp = $this->getProtectedProperty($api, 'request', ['/accessories', [], 'DELETE']);
+    $this->assertNotNull($resp->body);
+  }
+
+  // request() tests end
 }
