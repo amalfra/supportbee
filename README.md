@@ -6,7 +6,7 @@ SupportBee API
 
 A PHP wrapper for the SupportBee REST API.
 
-> You can find your API token in Settings > API Token screen. See https://developers.supportbee.com/api for more.
+> You can find your API token in Settings > API Token screen. See https://supportbee.com/api for more.
 
 ## Installation
 In your project root, run the following:
@@ -47,7 +47,7 @@ Now the available API calls can be done using the instance. All the result from 
 
 ## Available API methods
 
-**Please refer to [https://developers.supportbee.com/api](https://developers.supportbee.com/api) for avaialble parameter details.**
+**Please refer to [https://supportbee.com/api](https://supportbee.com/api) for avaialble parameter details.**
 
 Incase of multiple paramters : Pass as an associative array.
 All method names follow Camel Casing.
