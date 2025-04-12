@@ -47,7 +47,7 @@ Now the available API calls can be done using the instance. All the result from 
 
 ## Available API methods
 
-**Please refer to [https://supportbee.com/api](https://supportbee.com/api) for avaialble parameter details.**
+**Please refer to [https://supportbee.com/api](https://supportbee.com/api) for available parameter details.**
 
 Incase of multiple paramters : Pass as an associative array.
 All method names follow Camel Casing.
