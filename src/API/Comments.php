@@ -10,26 +10,26 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Comments extends HTTP {
-  public static function comments($id = 0) {
-    return self::process_request('tickets/'.$id.'/comments');
+  public function comments($id = 0) {
+    return $this->process_request('tickets/'.$id.'/comments');
   }
 
-  public static function create_comment($ticket_id = 0, $options = array()) {
+  public function create_comment($ticket_id = 0, $options = array()) {
     self::validate($options, array(
-      'html', 'text', 'attachment_ids'
+      'html', 'text', 'attachments'
     ), array('html', 'text'));
 
     $body = array('content' => array());
-    if (isset($body['html'])) {
+    if (isset($options['html'])) {
       $body['content']['html'] = $options['html'];
     }
-    if (isset($body['text'])) {
+    if (isset($options['text'])) {
       $body['content']['text'] = $options['text'];
     }
-    if (isset($body['attachment_ids'])) {
-      $body['content']['attachment_ids'] = $options['attachment_ids'];
+    if (isset($options['attachments'])) {
+      $body['content']['attachments'] = $options['attachments'];
     }
 
-    return self::process_request('tickets/'.$ticket_id.'/comments', array('comment' => $body), 'POST');
+    return $this->process_request('tickets/'.$ticket_id.'/comments', array('comment' => $body), 'POST');
   }
 }

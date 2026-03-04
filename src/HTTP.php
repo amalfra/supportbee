@@ -76,7 +76,7 @@ class HTTP {
     }
   }
 
-  protected static function process_request($path, $options = array(), $method = 'GET') {
+  protected function process_request($path, $options = array(), $method = 'GET') {
     self::inject($options);
     array_walk($options, [self::class, 'tf_to_string']);
 

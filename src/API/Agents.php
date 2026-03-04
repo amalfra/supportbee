@@ -10,15 +10,15 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Agents extends HTTP {
-  public static function agents($options = array()) {
+  public function agents($options = array()) {
     self::validate($options, array(
       'with_invited'
     ));
 
-    return self::process_request('users', $options);
+    return $this->process_request('users', $options);
   }
 
-  public static function get_agent($id = 0) {
-    return self::process_request('users/'.$id);
+  public function get_agent($id = 0) {
+    return $this->process_request('users/'.$id);
   }
 }

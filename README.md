@@ -61,15 +61,13 @@ All method names follow Camel Casing.
  5. *deleteTicket* - Deletes a trashed ticket. Only Admins can delete a trashed ticket.
  6. *archiveTicket* - Archives an unarchived ticket.
  7. *unarchiveTicket* - Un-archives an archived ticket.
- 8. *assignTicket* - Assign a ticket to a User or Group. The first paramter is the ticket id. The second paramter is an associative arry with index as user_id if the ticket is to be assigned to an user and group_id if the ticket is to be assigned to a group.
- 9. *starTicket* - Stars an un-starred ticket.
- 10. *unstarTicket* - Un-stars a starred ticket.
- 11. *spamTicket* - Spam's an un-spammed ticket.
- 12. *unspamTicket* - Un-spam a spammed ticket.
- 13. *trashTicket* - Trashes an un-trashed ticket.
- 14. *untrashTicket* - Un-trashes a trashed ticket.
- 15. *addLabelToTicket* - Adds label to ticket. You can pass the ticket_id and label name as parameters.
- 16. *removeLabelFromTicket* - Removes label from ticket. You can pass the ticket_id and label name as parameters.
+ 8. *assignTicketToUser* - Assign a ticket to a User. The first paramter is the ticket id. The second paramter is user_id of the user.
+ 9. *spamTicket* - Spam's an un-spammed ticket.
+ 10. *unspamTicket* - Un-spam a spammed ticket.
+ 11. *trashTicket* - Trashes an un-trashed ticket.
+ 12. *untrashTicket* - Un-trashes a trashed ticket.
+ 13. *addLabelToTicket* - Adds label to ticket. You can pass the ticket_id and label name as parameters.
+ 14. *removeLabelFromTicket* - Removes label from ticket. You can pass the ticket_id and label name as parameters.
 
 ### Replies
  1. *replies* - Retrieves all the replies of the ticket with id ticket_id.
@@ -89,17 +87,9 @@ All method names follow Camel Casing.
 
  1. *labels* - Retrieves all the custom labels of a company.
 
-### Groups
-
- 1. *groups* - Retrieves all the groups of the company.
-
 ### Snippets
 
  1. *snippets* - Returns all the snippets of the company.
-
-### WebHooks
-
- 1. *webhooks* - Returns all the web hooks of the company.
 
 ### Reports
 

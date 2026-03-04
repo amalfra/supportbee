@@ -8,7 +8,6 @@ use Amalfra\SupportBee\API\Replies;
 use Amalfra\SupportBee\API\Comments;
 use Amalfra\SupportBee\API\Agents;
 use Amalfra\SupportBee\API\Labels;
-use Amalfra\SupportBee\API\Groups;
 use Amalfra\SupportBee\API\Snippets;
 use Amalfra\SupportBee\API\WebHooks;
 use Amalfra\SupportBee\API\Reports;
@@ -20,7 +19,7 @@ use Amalfra\SupportBee\API\Emails;
  * @package Amalfra\SupportBee
  */
 class Client {
-  const BASE    = 'https://COMPANY.supportbee.com/';
+  const BASE = 'https://COMPANY.supportbee.com/';
 
   public static $base_url   = null;
   public static $auth_token = null;
@@ -60,63 +59,55 @@ class Client {
   }
 
   public function tickets($options = array()) {
-    return Tickets::tickets($options);
+    return new Tickets()->tickets($options);
   }
 
   public function ticket($id = 0) {
-    return Tickets::get_ticket($id);
+    return new Tickets()->get_ticket($id);
   }
 
   public function createTicket($options = array()) {
-    return Tickets::create_ticket($options);
+    return new Tickets()->create_ticket($options);
   }
 
   public function deleteTicket($id = 0) {
-    return Tickets::delete_ticket($id);
+    return new Tickets()->delete_ticket($id);
   }
 
   public function archiveTicket($id = 0) {
-    return Tickets::archive_ticket($id);
+    return new Tickets()->archive_ticket($id);
   }
 
   public function unarchiveTicket($id = 0) {
-    return Tickets::unarchive_ticket($id);
+    return new Tickets()->unarchive_ticket($id);
   }
 
-  public function assignTicket($options = array()) {
-    return Tickets::assign_ticket($options);
-  }
-
-  public function starTicket($id = 0) {
-    return Tickets::star_ticket($id);
-  }
-
-  public function unstarTicket($id = 0) {
-    return Tickets::unstar_ticket($id);
+  public function assignTicketToUser($id = 0, $options = array()) {
+    return new Tickets()->assign_ticket_to_user($id, $options);
   }
 
   public function spamTicket($id = 0) {
-    return Tickets::spam_ticket($id);
+    return new Tickets()->spam_ticket($id);
   }
 
   public function unspamTicket($id = 0) {
-    return Tickets::unspam_ticket($id);
+    return new Tickets()->unspam_ticket($id);
   }
 
   public function trashTicket($id = 0) {
-    return Tickets::trash_ticket($id);
+    return new Tickets()->trash_ticket($id);
   }
 
   public function untrashTicket($id = 0) {
-    return Tickets::untrash_ticket($id);
+    return new Tickets()->untrash_ticket($id);
   }
   
   public function addLabelToTicket($id = 0, $label = '') {
-    return Tickets::add_label($id, $label);
+    return new Tickets()->add_label($id, $label);
   }
   
   public function removeLabelFromTicket($id = 0, $label = '') {
-    return Tickets::remove_label($id, $label);
+    return new Tickets()->remove_label($id, $label);
   }
 
   public function searchTickets($options = array()) {
@@ -124,23 +115,23 @@ class Client {
       $options = array('query' => $options);
     }
 
-    return Tickets::search($options);
+    return new Tickets()->search($options);
   }
 
   public function replies($id = 0) {
-    return Replies::replies($id);
+    return new Replies()->replies($id);
   }
 
   public function reply($ticket_id = 0, $reply_id = 0) {
-    return Replies::get_reply($ticket_id, $reply_id);
+    return new Replies()->get_reply($ticket_id, $reply_id);
   }
 
   public function comments($id = 0) {
-    return Comments::comments($id);
+    return new Comments()->comments($id);
   }
 
   public function createComment($ticket_id = 0, $options = array()) {
-    return Comments::create_comment($ticket_id, $options);
+    return new Comments()->create_comment($ticket_id, $options);
   }
 
   public function agents($options = array()) {
@@ -148,46 +139,42 @@ class Client {
       $options = array('with_invited' => $options);
     }
 
-    return Agents::agents($options);
+    return new Agents()->agents($options);
   }
 
   public function agent($id = 0) {
-    return Agents::get_agent($id);
+    return new Agents()->get_agent($id);
   }
 
   public function labels() {
-    return Labels::labels();
-  }
-
-  public function groups($options = array()) {
-    return Groups::groups($options);
+    return new Labels()->labels();
   }
 
   public function snippets() {
-    return Snippets::snippets();
+    return new Snippets()->snippets();
   }
 
   public function webhooks() {
-    return WebHooks::webhooks();
+    return new WebHooks()->webhooks();
   }
 
   public function avgFirstResponseTimeReport($options = array()) {
-    return Reports::avg_first_response_time_report($options);
+    return new Reports()->avg_first_response_time_report($options);
   }
 
   public function ticketsCountReport($options = array()) {
-    return Reports::tickets_count_report($options);
+    return new Reports()->tickets_count_report($options);
   }
 
   public function repliesCountReport($options = array()) {
-    return Reports::replies_count_report($options);
+    return new Reports()->replies_count_report($options);
   }
 
   public function emails() {
-    return Emails::emails();
+    return new Emails()->emails();
   }
 
   public function createEmail($options = array()) {
-    return Emails::create_email($options);
+    return new Emails()->create_email($options);
   }
 }

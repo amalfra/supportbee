@@ -1,0 +1,71 @@
+<?php
+
+namespace Amalfra\SupportBee\Tests\API;
+
+use \InvalidArgumentException;
+use \PHPUnit\Framework\TestCase;
+use Amalfra\SupportBee\API\Agents;
+
+class AgentsTest extends TestCase {
+  // agents() tests start
+
+  /** @test */
+  public function validateThrowExecptionInvalidParam() {
+    try {	
+      $mock = $this->getMockBuilder(Agents::class)
+        ->onlyMethods(['process_request'])
+        ->getMock();
+
+      $mock->agents(['test' => true]);
+      $this->fail();
+    } catch (InvalidArgumentException $e) {
+      $this->assertTrue(true);
+    }
+  }
+
+  /** @test */
+  public function validateWithParamCorrectResponse() {
+    $expectedResponse = [
+      'users' => [
+        [
+          'id' => 18105297,
+          'type' => 'user',
+          'email' => 'test@test.com',
+          'first_name' => 'Test',
+          'last_name' => 'Test',
+          'name' => 'Test Test',
+          'role' => 'admin',
+          'agent' => true,
+          'two_factor_authentication_enabled' => false,
+          'picture' => [
+            'thumb20' => 'https://secure.gravatar.com/avatar/cxvbhdcfghfrf.png',
+            'thumb24' => 'https://secure.gravatar.com/avatar/cxvbhdcfghfrf.png',
+            'thumb32' => 'https://secure.gravatar.com/avatar/cxvbhdcfghfrf.png',
+            'thumb48' => 'https://secure.gravatar.com/avatar/cxvbhdcfghfrf.png',
+            'thumb64' => 'https://secure.gravatar.com/avatar/cxvbhdcfghfrf.png',
+            'thumb128' => 'https://secure.gravatar.com/avatar/cxvbhdcfghfrf.png',
+          ],
+          'can_members_access_group_tickets' => null,
+          'email_domains' => [],
+          'members_count' => 0,
+          'teams' => [],
+        ],
+      ],
+    ];
+
+    $mock = $this->getMockBuilder(Agents::class)
+      ->onlyMethods(['process_request'])
+      ->getMock();
+
+    $mock->expects($this->once())
+      ->method('process_request')
+      ->with('users', ['with_invited' => true])
+      ->willReturn($expectedResponse);
+
+    $result = $mock->agents(['with_invited' => true]);
+
+    $this->assertEquals($expectedResponse, $result);
+  }
+
+  // agents() tests end
+}

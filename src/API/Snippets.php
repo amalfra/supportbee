@@ -10,7 +10,7 @@ use Amalfra\SupportBee\HTTP;
  * @package Amalfra\SupportBee\API
  */
 class Snippets extends HTTP {
-  public static function snippets() {
-    return self::process_request('snippets');
+  public function snippets() {
+    return $this->process_request('snippets');
   }
 }

@@ -2,9 +2,9 @@
 
 namespace Amalfra\SupportBee\Tests;
 
+use \PHPUnit\Framework\TestCase;
 use Amalfra\SupportBee\Client;
 use Amalfra\SupportBee\Exceptions\ConfigException;
-use \PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase {
   // __construct() tests start

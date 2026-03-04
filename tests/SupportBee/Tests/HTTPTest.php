@@ -3,9 +3,9 @@
 namespace Amalfra\SupportBee\Tests;
 
 use \stdClass;
-use \PHPUnit\Framework\TestCase;
 use \ReflectionMethod;
 use \InvalidArgumentException;
+use \PHPUnit\Framework\TestCase;
 use Amalfra\SupportBee\HTTP;
 use Amalfra\SupportBee\Exceptions\HTTPException;
 
