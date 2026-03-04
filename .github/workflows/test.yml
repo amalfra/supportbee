@@ -4,7 +4,7 @@ jobs:
   test:
     strategy:
       matrix:
-        php-version: ['8.1']
+        php-version: ['8.4']
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
