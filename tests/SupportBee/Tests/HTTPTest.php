@@ -2,6 +2,7 @@
 
 namespace Amalfra\SupportBee\Tests;
 
+use \stdClass;
 use \PHPUnit\Framework\TestCase;
 use \ReflectionMethod;
 use \InvalidArgumentException;
@@ -110,9 +111,7 @@ class HTTPTest extends TestCase {
   /** @test */
   public function validateHandle_response() {
     $api = new HTTP();
-    $mock = $this->getMockBuilder('Response')
-              ->disableOriginalConstructor()
-              ->getMock();
+    $mock = new stdClass();
     $mock->status_code = 204;
 
     $this->assertTrue($this->getProtectedProperty($api, 'handle_response', [&$mock]));
@@ -121,9 +120,7 @@ class HTTPTest extends TestCase {
   /** @test */
   public function validateHandle_responseInvalid() {
     $api = new HTTP();
-    $mock = $this->getMockBuilder('Response')
-              ->disableOriginalConstructor()
-              ->getMock();
+    $mock = new stdClass();
     $mock->status_code = 400;
     $mock->body = 'abcd';
 
