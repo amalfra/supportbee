@@ -4,26 +4,21 @@ namespace Amalfra\SupportBee\Tests\API;
 
 use \InvalidArgumentException;
 use \PHPUnit\Framework\TestCase;
+use \PHPUnit\Framework\Attributes\Test;
 use Amalfra\SupportBee\API\Agents;
 
 class AgentsTest extends TestCase {
   // agents() tests start
 
-  /** @test */
+  #[Test]
   public function validateAgentsThrowExecptionInvalidParam() {
-    try {	
-      $mock = $this->getMockBuilder(Agents::class)
-        ->onlyMethods(['process_request'])
-        ->getMock();
+    $this->expectException(InvalidArgumentException::class);
 
-      $mock->agents(['test' => true]);
-      $this->fail();
-    } catch (InvalidArgumentException $e) {
-      $this->assertTrue(true);
-    }
+    $agents = new Agents();
+    $agents->agents(['test' => true]);
   }
 
-  /** @test */
+  #[Test]
   public function validateAgentsWithParamCorrectResponse() {
     $expectedResponse = [
       'users' => [
@@ -67,7 +62,7 @@ class AgentsTest extends TestCase {
     $this->assertEquals($expectedResponse, $result);
   }
 
-  /** @test */
+  #[Test]
   public function validateAgentsWithoutParamCorrectResponse() {
     $expectedResponse = [
       'users' => [
@@ -115,7 +110,7 @@ class AgentsTest extends TestCase {
 
   // get_agent() tests start
 
-  /** @test */
+  #[Test]
   public function validateGetAgentWorksWithoutId() {
     $expectedResponse = [];
 
@@ -133,7 +128,7 @@ class AgentsTest extends TestCase {
     $this->assertEquals($expectedResponse, $result);
   }
 
-  /** @test */
+  #[Test]
   public function validateGetAgentWorksWithId() {
     $expectedResponse = [
       'user' => [
