@@ -3,13 +3,14 @@
 namespace Amalfra\SupportBee\Tests;
 
 use \PHPUnit\Framework\TestCase;
+use \PHPUnit\Framework\Attributes\Test;
 use Amalfra\SupportBee\Client;
 use Amalfra\SupportBee\Exceptions\ConfigException;
 
 class ClientTest extends TestCase {
   // __construct() tests start
 
-  /** @test */
+  #[Test]
   public function validateObjectCreationWithoutTokenAndCompany() {
     try {		
       $supportbee = new Client();
@@ -18,7 +19,7 @@ class ClientTest extends TestCase {
     }
   }
 
-  /** @test */
+  #[Test]
   public function validateObjectCreationWithoutToken() {
     try {		
       $config = array(
@@ -30,7 +31,7 @@ class ClientTest extends TestCase {
     }
   }
 
-  /** @test */
+  #[Test]
   public function validateObjectCreationWithoutCompany() {
     try {		
       $config = array(
@@ -42,7 +43,7 @@ class ClientTest extends TestCase {
     }
   }
 
-  /** @test */
+  #[Test]
   public function validateObjectCreationWithValidTokenAndCompany() {	
     $config = array(
       'token' => 'abcd',

@@ -6,6 +6,7 @@ use \stdClass;
 use \ReflectionMethod;
 use \InvalidArgumentException;
 use \PHPUnit\Framework\TestCase;
+use \PHPUnit\Framework\Attributes\Test;
 use Amalfra\SupportBee\HTTP;
 use Amalfra\SupportBee\Exceptions\HTTPException;
 
@@ -18,7 +19,7 @@ class HTTPTest extends TestCase {
 
   // validate() tests start
 
-  /** @test */
+  #[Test]
   public function validateThrowExecptionNotArrayParamPassed() {
     $api = new HTTP();
 
@@ -30,7 +31,7 @@ class HTTPTest extends TestCase {
     }
   }
 
-  /** @test */
+  #[Test]
   public function validateThrowExecptionNoValidParam() {
     $api = new HTTP();
 
@@ -42,7 +43,7 @@ class HTTPTest extends TestCase {
     }
   }
 
-  /** @test */
+  #[Test]
   public function validateThrowExecptionNoRequiredParam() {
     $api = new HTTP();
 
@@ -58,7 +59,7 @@ class HTTPTest extends TestCase {
 
   // tfTostring() tests start
 
-  /** @test */
+  #[Test]
   public function validatetf_to_string() {
     $api = new HTTP();
     $var = true;
@@ -72,7 +73,7 @@ class HTTPTest extends TestCase {
     }
   }
 
-  /** @test */
+  #[Test]
   public function validatetf_to_stringValueFalse() {
     $api = new HTTP();
     $var = false;
@@ -90,7 +91,7 @@ class HTTPTest extends TestCase {
 
   // inject() tests start
 
-  /** @test */
+  #[Test]
   public function validateInject() {
     $api = new HTTP();
     $var = array('val1' => 'key1');
@@ -108,7 +109,7 @@ class HTTPTest extends TestCase {
 
   // handle_response() tests start
 
-  /** @test */
+  #[Test]
   public function validateHandle_response() {
     $api = new HTTP();
     $mock = new stdClass();
@@ -117,7 +118,7 @@ class HTTPTest extends TestCase {
     $this->assertTrue($this->getProtectedProperty($api, 'handle_response', [&$mock]));
   }
 
-  /** @test */
+  #[Test]
   public function validateHandle_responseInvalid() {
     $api = new HTTP();
     $mock = new stdClass();
@@ -135,7 +136,7 @@ class HTTPTest extends TestCase {
 
   // request() tests start
 
-  /** @test */
+  #[Test]
   public function validaterequestThrowExecptionUnknownMethod() {
     $api = new HTTP();
 
@@ -147,7 +148,7 @@ class HTTPTest extends TestCase {
     }
   }
 
-  /** @test */
+  #[Test]
   public function validaterequestGETMethod() {
     $api = new HTTP();
 	
@@ -155,7 +156,7 @@ class HTTPTest extends TestCase {
     $this->assertNotNull($resp->body);
   }
 
-  /** @test */
+  #[Test]
   public function validaterequestPOSTMethod() {
     $api = new HTTP();
 	
@@ -163,7 +164,7 @@ class HTTPTest extends TestCase {
     $this->assertNotNull($resp->body);
   }
 
-  /** @test */
+  #[Test]
   public function validaterequestDELETEMethod() {
     $api = new HTTP();
 	
